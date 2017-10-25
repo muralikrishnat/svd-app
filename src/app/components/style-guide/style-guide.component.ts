@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-style-guide',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StyleGuideComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private app: AppComponent
+  ) { }
 
   ngOnInit() {
   }
 
+  navigationTo(url) {
+    this.app.pageTransition = 'slideup';
+    this.router.navigateByUrl(url);
+  }
 }
