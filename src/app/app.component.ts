@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { trigger, animate, style, group, query, transition } from '@angular/animations';
+import { AuthService } from './services/auth/auth.service';
+
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +23,12 @@ import { trigger, animate, style, group, query, transition } from '@angular/anim
   ]
 })
 export class AppComponent {
-  title = 'app';
+  title = 'svd';
   pageTransition = '';
+
+  constructor(private auth: AuthService) {
+    // auth.login('mtottimpudi@evoketechnologies.com', 'password');
+  }
   getState(outlet) {
     return this.pageTransition;
   }

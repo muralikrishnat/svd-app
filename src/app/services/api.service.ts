@@ -1,61 +1,71 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
+import * as $ from 'jquery';
 
 @Injectable()
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  Authorization;
+  constructor() { }
 
   makeRequest(opts) {
-    let headers = this.getHeaders(opts);
-    let promise, url = environment.apiUrl + '/' + opts.url;
-    switch (opts.method) {
-      case 'DELETE':
-        promise = this.http.delete(url, { headers, responseType: 'json' });
-        break;
-      case 'PATCH':
-        promise = this.http.patch(url, opts.body || {}, { headers, responseType: "json" });
-        break;
-      case 'POST':
-        promise = this.http.post(url, opts.body || {}, { headers, responseType: "json" });
-        break;
-      case 'GET':
-      default:
-        promise = this.http.get(url, { headers, responseType: "json" });
-        break;
+    const headers = this.getHeaders(opts);
+    if (this.Authorization || (opts.headers && opts.headers.Authorization)) {
+      headers['Authorization'] = (opts.headers && opts.headers.Authorization ? opts.headers.Authorization : this.Authorization);
     }
+    const url = environment.apiUrl + (opts.url.indexOf('/') === 0 ? opts.url : '/' + opts.url);
+    const promise = new Promise((res, rej) => {
+      $.ajax({
+        method: opts.method,
+        url: url,
+        contentType: 'application/json',
+        headers: headers,
+        data: JSON.stringify(opts.data),
+        success: function (data, textStatus, response) {
+          res(data);
+        }, error: function (err) {
+          rej(err);
+        }
+      });
+    });
     return promise;
   }
 
-  getHeaders(opts) {
-    let headers = new HttpHeaders();
-    headers.set('Authorization', '');
+  getHeaders(opts: Opts) {
+    const headers = { 'Accept': 'application/json' };
     if (opts.headers) {
       Object.assign(headers, opts.headers);
     }
     return headers;
   }
 
-  get(opts) {
+  get(opts: Opts) {
     opts.method = 'GET';
-    this.makeRequest(opts);
+    return this.makeRequest(opts);
   }
 
-  post(opts) {
+  post(opts: Opts) {
     opts.method = 'POST';
-    this.makeRequest(opts);
+    return this.makeRequest(opts);
   }
 
-  patch(opts) {
+  patch(opts: Opts) {
     opts.method = 'PATCH';
-    this.makeRequest(opts);
+    return this.makeRequest(opts);
   }
 
-  delete(opts) {
+  delete(opts: Opts) {
     opts.method = 'DELETE';
-    this.makeRequest(opts);
+    return this.makeRequest(opts);
   }
 
+}
+
+
+export class Opts {
+  method?: string;
+  data?: any;
+  url: string;
+  headers?: any;
 }

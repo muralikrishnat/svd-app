@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: ''
+  apiUrl: 'https://svd-up-rest-dev.azurewebsites.net/api/v1'
 };

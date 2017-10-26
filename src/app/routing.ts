@@ -1,6 +1,6 @@
 import { StyleGuideComponent } from './components/style-guide/style-guide.component';
 import { LoginComponent } from './components/login/login.component';
-var routings = [
+const routings = [
     {
         path: 'style-guide',
         component: StyleGuideComponent,
@@ -16,4 +16,4 @@ var routings = [
         }
     }
 ];
-export var Routings = { paths: routings };
+export const Routings = { paths: routings };

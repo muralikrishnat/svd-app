@@ -10,5 +10,5 @@ export class Address {
     companyName: string;
 
     district: string;
-    
+
 }

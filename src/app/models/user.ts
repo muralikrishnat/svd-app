@@ -5,6 +5,7 @@ export class User {
     lastName: string;
     email: string;
     phone: string;
+    defaultAddressId: any;
     status: string;
     roles: Role[];
     numberOfRatings: number;
@@ -12,4 +13,9 @@ export class User {
     safetyTrained: boolean;
     createdAt: number;
     _links?: any;
+}
+
+export class LoginModel {
+    email: string;
+    password: string;
 }

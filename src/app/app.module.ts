@@ -6,8 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Routings } from './routing';
 
-import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
+import { AuthService } from './services/auth/auth.service';
 
 import { AppComponent } from './app.component';
 import { StyleGuideComponent } from './components/style-guide/style-guide.component';
@@ -23,10 +23,9 @@ import { LoginComponent } from './components/login/login.component';
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(Routings.paths),
-    HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
