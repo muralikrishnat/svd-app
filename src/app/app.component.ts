@@ -42,6 +42,10 @@ export class AppComponent {
 
     auth.login(loginModel).then(() => {
       
+      api.get({
+        url :'/users'
+      });
+
       // api.get({
       //   url: '/users/search/findByRole?role=CUSTOMER_PURCHASER'
       // });
@@ -120,7 +124,7 @@ export class AppComponent {
   }
 
   navigateByUrl(url, pageTransition?) {
-    this.pageTransition = pageTransition;
+    this.pageTransition = pageTransition || 'slideleft';
     this.router.navigateByUrl(url);
   }
 }
