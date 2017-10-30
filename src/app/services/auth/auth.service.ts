@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService, Opts } from '../api.service';
+import { LoginModel } from '../../models/user';
 @Injectable()
 export class AuthService {
 
@@ -7,16 +8,18 @@ export class AuthService {
     private api: ApiService
   ) { }
 
-  login(username, password) {
+  login(login: LoginModel) {
     const opts: Opts = {
       url: '/auth/login',
       data: {
-        email: username,
-        password: password
-      }
+        email: login.email,
+        password: login.password
+      },
+      setAuthorization: true
     };
-    return this.api.post(opts).then((resp) => {
+    return this.api.post(opts).then(({ err, resp }) => {
       console.log('login resp', resp);
+
     });
   }
 

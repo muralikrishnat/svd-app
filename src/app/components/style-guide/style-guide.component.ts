@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
 
 @Component({
@@ -10,15 +9,13 @@ import { AppComponent } from '../../app.component';
 export class StyleGuideComponent implements OnInit {
 
   constructor(
-    private router: Router,
     private app: AppComponent
   ) { }
 
   ngOnInit() {
   }
 
-  navigationTo(url) {
-    this.app.pageTransition = 'slideup';
-    this.router.navigateByUrl(url);
+  navigationTo(url, pageTrasition) {
+    this.app.navigateByUrl(url, pageTrasition);
   }
 }

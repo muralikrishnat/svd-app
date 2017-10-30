@@ -22,10 +22,14 @@ export class ApiService {
         contentType: 'application/json',
         headers: headers,
         data: JSON.stringify(opts.data),
-        success: function (data, textStatus, response) {
-          res(data);
-        }, error: function (err) {
-          rej(err);
+        success: (data, textStatus, response) => {
+          if (response.getResponseHeader('authorization') && opts.setAuthorization) {
+            this.Authorization = response.getResponseHeader('authorization');
+          }
+          res({ resp: data });
+        }, error: (err) => {
+          console.log('ERROR API : ', url);
+          res({ err });
         }
       });
     });
@@ -68,4 +72,5 @@ export class Opts {
   data?: any;
   url: string;
   headers?: any;
+  setAuthorization?: boolean;
 }
