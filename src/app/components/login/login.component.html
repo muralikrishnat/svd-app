@@ -1,7 +1,21 @@
-<div class="login-section">
-    <nav>
-        <a class="lnk-nav" (click)="navigationTo('/login', 'slideup')">Login</a>
-        <a class="lnk-nav" (click)="navigationTo('/style-guide', 'slideleft')">Style Guide</a>
-    </nav>
-    Login Page
+<div class="login-section ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <nav>
+                    <a class="lnk-nav" (click)="navigationTo('/login', 'slideup')">Login</a>
+                    <a class="lnk-nav" (click)="navigationTo('/style-guide', 'slideleft')">Style Guide</a>
+                </nav>
+                Login Page
+            </div>
+        </div>
+
+
+    </div>
+    <div class="section-create-account">
+        <div class="div-opacity"></div>
+        <div class="btn-container">
+            <a class="btn btn-link btn-create-account" (click)="navigationTo('/create-account-type', 'slideleft')">Create an account</a>
+        </div>
+    </div>
 </div>

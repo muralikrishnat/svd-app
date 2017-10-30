@@ -38,5 +38,14 @@ export const routerTransition = trigger('routerTransition', [
                 animate('0.3s ease-in-out', style({ transform: 'translateX(0%)' }))
             ], { optional: true })
         ])
-    ])
+    ]),
+    transition('* => slidedown', [
+        query(':enter, :leave', style({ position: 'fixed', width: '100%' }), { optional: true }),
+        group([
+            query(':leave', [
+                style({ transform: 'translateY(0%)' }),
+                animate('0.5s ease-in-out', style({ transform: 'translateY(100%)' }))
+            ], { optional: true })
+        ])
+    ]),
 ]);

@@ -7,4 +7,6 @@
 
 * Data must flows down to child components from App Component
 
-* Use PubSub Service for emiting and listening on data b'coz it has very light weight footprint
+* Use PubSub Service for emiting and listening on data b'coz it has very effective and light weight footprint, it falls under component change detection
+
+* Use ```app.navigateByUrl``` always when navigating from page to page, It is easy to track user navigation and listen to route change before angular detects

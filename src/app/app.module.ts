@@ -12,12 +12,14 @@ import { AuthService } from './services/auth/auth.service';
 import { AppComponent } from './app.component';
 import { StyleGuideComponent } from './components/style-guide/style-guide.component';
 import { LoginComponent } from './components/login/login.component';
+import { CreateAccountTypeComponent } from './components/create-account-type/create-account-type.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StyleGuideComponent,
-    LoginComponent
+    LoginComponent,
+    CreateAccountTypeComponent
   ],
   imports: [
     BrowserModule,

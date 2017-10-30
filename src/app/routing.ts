@@ -1,5 +1,6 @@
 import { StyleGuideComponent } from './components/style-guide/style-guide.component';
 import { LoginComponent } from './components/login/login.component';
+import { CreateAccountTypeComponent  } from './components/create-account-type/create-account-type.component';
 const routings = [
     {
         path: 'style-guide',
@@ -8,6 +9,10 @@ const routings = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'create-account-type',
+        component: CreateAccountTypeComponent
     },
     {
         path: '',
