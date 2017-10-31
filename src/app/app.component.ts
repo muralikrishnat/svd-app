@@ -43,7 +43,7 @@ export class AppComponent {
     auth.login(loginModel).then(() => {
       
       api.get({
-        url :'/users'
+        url :'/regions'
       });
 
       // api.get({

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-create-account-password',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateAccountPasswordComponent implements OnInit {
 
-  constructor() { }
+  user: any = {};
+  constructor(
+    private app: AppComponent
+  ) { }
 
   ngOnInit() {
   }
 
+  navigationTo(url, pageTransiation) {
+    this.app.navigateByUrl(url, pageTransiation);
+  }
+  createAccount() {
+    this.app.navigateByUrl('/create-account-code');
+  }
 }

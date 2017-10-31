@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-create-account-createteam',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateAccountCreateteamComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private app: AppComponent
+  ) { }
 
   ngOnInit() {
+  }
+
+  createTeam() {
+    this.app.navigateByUrl('/address-list');
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-create-account-authority',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateAccountAuthorityComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private app: AppComponent
+  ) { }
 
   ngOnInit() {
+  }
+
+  navigationTo(url, pageTransiation) {
+    this.app.navigateByUrl(url, pageTransiation);
   }
 
 }
