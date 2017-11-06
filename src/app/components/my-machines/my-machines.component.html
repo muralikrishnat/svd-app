@@ -1,3 +1,14 @@
-<p>
-  my-machines works!
-</p>
+<div class="page-section no-bg address-list">
+    <div class="container-fluid">
+        <div class="row pt-3 page-head-section">
+            <button class="btn btn-link btn-back col-2" (click)="app.navigateByUrl('/address-list', 'slideright')">BACK</button>
+            <div class="col-8 my-address-heading">My Machines</div>
+            <button class="col-2 btn btn-link" (click)="addMachine()">ADD</button>
+        </div>
+        <div class="row">
+            <div *ngFor="let machine of Machines">
+                <div>{{machine.manufacturer.name }}, {{machine.modelNumber }}, {{ machine.serialNumber }},  {{ machine.technologyType.name }}</div>
+            </div>
+        </div>
+    </div>
+</div>

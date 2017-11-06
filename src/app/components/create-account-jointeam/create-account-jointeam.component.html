@@ -1,3 +1,16 @@
-<p>
-  create-account-jointeam works!
-</p>
+<div class="page-section no-bg">
+  <div class="container-fluid">
+      <div class="row pt-3 page-head-section">
+          <button class="btn btn-link btn-back" (click)="app.navigateByUrl('/create-account-password', 'slideright')">BACK</button>
+      </div>
+      <form #teamLeadForm="ngForm" (submit)="joinTeam()">
+          <div class="row mt-3">
+              <input class="txt-input" placeholder="Team lead email" type="text" [(ngModel)]="formData.teamleadmail" #teamleadmail="ngModel" name="teamleadmail" id="teamleadmail" />
+          </div>
+          <div class="row mt-2">
+              <button type="submit" class="btn prime col-8 offset-2" [disabled]="teamLeadForm.invalid"> Join Team </button>
+          </div>
+      </form>
+
+  </div>
+</div>

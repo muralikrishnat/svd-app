@@ -1,10 +1,24 @@
 <div class="page-section no-bg">
-  <div class="container-fluid">
-      <div class="row pt-3 page-head-section">
-          <button class="btn btn-link btn-back" (click)="navigationTo('/create-account-code', 'slideright')">BACK</button>
-      </div>
-      <div class="row mt-2">
-          <div class="btn prime col-8 offset-2" (click)="createTeam()"> Add My Location </div>
-      </div>
-  </div>
+    <div class="container-fluid">
+        <div class="row pt-3 page-head-section">
+            <button class="btn btn-link btn-back" (click)="app.navigateByUrl('/create-account-code', 'slideright')">BACK</button>
+        </div>
+        <form #teamForm="ngForm" (submit)="createTeam()">
+            <div class="col-12 mt-2">
+                <input placeholder="First Name" class="txt-input" #firstName="ngModel" required type="text" [(ngModel)]="teamDetails.firstName" id="firstname" name="firstName" />
+            </div>
+            <div class="col-12 mt-2">
+                <input placeholder="Last Name" class="txt-input" #lastName="ngModel" required type="text" [(ngModel)]="teamDetails.lastName" id="lastName" name="lastName" />
+            </div>
+            <div class="col-12 mt-2">
+                <input placeholder="Team Name" class="txt-input" #teamName="ngModel" required type="text" [(ngModel)]="teamDetails.teamName" id="teamName" name="teamName" />
+            </div>
+            <div class="col-12 mt-2">
+                <input placeholder="Phone Number" class="txt-input" #phone="ngModel" required type="text" [(ngModel)]="teamDetails.phone" id="phone" name="phone" />
+            </div>
+            <div class="row mt-2">
+                <button type="submit" [disabled]="teamForm.invalid" class="btn prime col-8 offset-2"> Add AN ADDRESS </button>
+            </div>
+        </form>
+    </div>
 </div>

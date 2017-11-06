@@ -15,6 +15,7 @@ import { TechnologyListComponent } from './components/technology-list/technology
 import { TechnologyNewEditComponent } from './components/technology-new-edit/technology-new-edit.component';
 import { ManufacturerListComponent } from './components/manufacturer-list/manufacturer-list.component';
 import { ManufacturerNewEditComponent } from './components/manufacturer-new-edit/manufacturer-new-edit.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routings = [
     {
@@ -24,6 +25,10 @@ const routings = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'dashboard',
+        component: DashboardComponent
     },
     {
         path: 'create-account-type',
@@ -46,6 +51,14 @@ const routings = [
         component: CreateAccountCreateteamComponent
     },
     {
+        path: 'create-account-name',
+        component: CreateAccountNameComponent
+    },
+    {
+        path: 'create-account-jointeam',
+        component: CreateAccountJointeamComponent
+    },
+    {
         path: 'address-list',
         component: AddressListComponent
     },
@@ -64,9 +77,85 @@ const routings = [
         }
     },
     {
+        path: 'machines-list',
+        component: MyMachinesComponent
+    },
+    {
+        path: 'machines-new',
+        component: MachinesNewEditComponent,
+        data: {
+            isEdit: false
+        }
+    },
+    {
+        path: 'machines-edit/{addressId}',
+        component: MachinesNewEditComponent,
+        data: {
+            isEdit: true
+        }
+    },
+    {
+        path: 'manufacturer-list',
+        component: ManufacturerListComponent
+    },
+    {
+        path: 'manufacturer-new',
+        component: ManufacturerNewEditComponent,
+        data: {
+            isEdit: false
+        }
+    },
+    {
+        path: 'manufacturer-edit/{addressId}',
+        component: ManufacturerNewEditComponent,
+        data: {
+            isEdit: true
+        }
+    },
+    {
+        path: 'technology-list',
+        component: TechnologyListComponent
+    },
+    {
+        path: 'technology-new',
+        component: TechnologyNewEditComponent,
+        data: {
+            isEdit: false
+        }
+    },
+    {
+        path: 'technology-edit/{addressId}',
+        component: TechnologyNewEditComponent,
+        data: {
+            isEdit: true
+        }
+    },
+    {
         path: '',
         redirectTo: 'login',
         pathMatch: 'full'
     }
 ];
-export const Routings = { paths: routings };
+export const Routings = {
+    paths: routings,
+    deps: [
+        StyleGuideComponent,
+        LoginComponent,
+        CreateAccountTypeComponent,
+        CreateAccountAuthorityComponent,
+        CreateAccountPasswordComponent,
+        CreateAccountNameComponent,
+        CreateAccountCodeComponent,
+        CreateAccountJointeamComponent,
+        CreateAccountCreateteamComponent,
+        AddressListComponent,
+        AddressNewEditComponent,
+        MyMachinesComponent,
+        MachinesNewEditComponent,
+        TechnologyListComponent,
+        TechnologyNewEditComponent,
+        ManufacturerListComponent,
+        ManufacturerNewEditComponent,
+        DashboardComponent
+    ]
+};

@@ -1,20 +1,26 @@
 import { Injectable } from '@angular/core';
+import * as $ from 'jquery';
 
 import { environment } from '../../environments/environment';
-import * as $ from 'jquery';
+import { UtilsService } from '../services/utils/utils.service';
 
 @Injectable()
 export class ApiService {
 
   Authorization;
-  constructor() { }
+  constructor(
+    private utils: UtilsService
+  ) { }
 
   makeRequest(opts) {
     const headers = this.getHeaders(opts);
     if (this.Authorization || (opts.headers && opts.headers.Authorization)) {
       headers['Authorization'] = (opts.headers && opts.headers.Authorization ? opts.headers.Authorization : this.Authorization);
     }
-    const url = environment.apiUrl + (opts.url.indexOf('/') === 0 ? opts.url : '/' + opts.url);
+    let url = environment.apiUrl + (opts.url.indexOf('/') === 0 ? opts.url : '/' + opts.url);
+    if (opts.isFullUrl) {
+      url = opts.url;
+    }
     const promise = new Promise((res, rej) => {
       $.ajax({
         method: opts.method,
@@ -22,14 +28,15 @@ export class ApiService {
         contentType: 'application/json',
         headers: headers,
         data: JSON.stringify(opts.data),
+        crossDomain: true,
         success: (data, textStatus, response) => {
           if (response.getResponseHeader('authorization') && opts.setAuthorization) {
             this.Authorization = response.getResponseHeader('authorization');
+            this.utils.setCookie('authorization', this.Authorization);
           }
-          res({ resp: data });
+          res({ resp: data, fullResponse: response });
         }, error: (err) => {
-          console.log('ERROR API : ', url);
-          res({ err });
+          res({ err: err.responseJSON });
         }
       });
     });
@@ -73,4 +80,6 @@ export class Opts {
   url: string;
   headers?: any;
   setAuthorization?: boolean;
+  withRootPassword?: any;
+  isFullUrl?: boolean;
 }

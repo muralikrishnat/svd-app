@@ -8,6 +8,14 @@ import { Routings } from './routing';
 
 import { ApiService } from './services/api.service';
 import { AuthService } from './services/auth/auth.service';
+import { PubSubService } from './services/utils/pub-sub.service';
+import { SessionService } from './services/data/session.service';
+import { UserService } from './services/user/user.service';
+import { CustomerService } from './services/user/customer.service';
+import { UtilsService } from './services/utils/utils.service';
+import { AuxilaryService } from './services/auxilary.service';
+import { RegionService } from './services/region/region.service';
+import { MachineService } from './services/machine/machine.service';
 
 import { AppComponent } from './app.component';
 import { StyleGuideComponent } from './components/style-guide/style-guide.component';
@@ -27,35 +35,50 @@ import { TechnologyListComponent } from './components/technology-list/technology
 import { TechnologyNewEditComponent } from './components/technology-new-edit/technology-new-edit.component';
 import { ManufacturerListComponent } from './components/manufacturer-list/manufacturer-list.component';
 import { ManufacturerNewEditComponent } from './components/manufacturer-new-edit/manufacturer-new-edit.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
+
+const deps: Array<any> = [
+  AppComponent,
+  StyleGuideComponent,
+  LoginComponent,
+  CreateAccountTypeComponent,
+  CreateAccountAuthorityComponent,
+  CreateAccountPasswordComponent,
+  CreateAccountNameComponent,
+  CreateAccountCodeComponent,
+  CreateAccountJointeamComponent,
+  CreateAccountCreateteamComponent,
+  AddressListComponent,
+  AddressNewEditComponent,
+  MyMachinesComponent,
+  MachinesNewEditComponent,
+  TechnologyListComponent,
+  TechnologyNewEditComponent,
+  ManufacturerListComponent,
+  ManufacturerNewEditComponent,
+  DashboardComponent
+];
 @NgModule({
-  declarations: [
-    AppComponent,
-    StyleGuideComponent,
-    LoginComponent,
-    CreateAccountTypeComponent,
-    CreateAccountAuthorityComponent,
-    CreateAccountPasswordComponent,
-    CreateAccountNameComponent,
-    CreateAccountCodeComponent,
-    CreateAccountJointeamComponent,
-    CreateAccountCreateteamComponent,
-    AddressListComponent,
-    AddressNewEditComponent,
-    MyMachinesComponent,
-    MachinesNewEditComponent,
-    TechnologyListComponent,
-    TechnologyNewEditComponent,
-    ManufacturerListComponent,
-    ManufacturerNewEditComponent
-  ],
+  declarations: deps,
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(Routings.paths),
     BrowserAnimationsModule
   ],
-  providers: [ApiService, AuthService],
+  providers: [
+    ApiService,
+    AuthService,
+    PubSubService,
+    SessionService,
+    UserService,
+    UtilsService,
+    CustomerService,
+    AuxilaryService,
+    RegionService,
+    MachineService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

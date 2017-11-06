@@ -1,3 +1,13 @@
-<p>
-  technology-list works!
-</p>
+<div class="page-section no-bg address-list">
+    <div class="container-fluid">
+        <div class="row pt-3 page-head-section">
+            <button class="btn btn-link btn-back col-2" (click)="navigateBack()">BACK</button>
+            <div class="col-8 my-address-heading">TechnologiesTypes</div>
+        </div>
+        <div class="">
+            <div *ngFor="let item of TechnologiesTypes">
+                <div (click)="selectTechnologiesType(item)">{{ item.name }}</div>
+            </div>
+        </div>
+    </div>
+</div>

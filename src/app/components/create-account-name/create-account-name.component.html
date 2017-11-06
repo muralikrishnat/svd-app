@@ -1,3 +1,22 @@
-<p>
-  create-account-name works!
-</p>
+<div class="page-section no-bg">
+  <div class="container-fluid">
+      <div class="row pt-3 page-head-section">
+          <button class="btn btn-link btn-back" (click)="app.navigateByUrl('/create-account-code', 'slideright')">BACK</button>
+      </div>
+      <form #userDetailsForm="ngForm" (submit)="saveToSession()">
+          <div class="col-12 mt-2">
+              <input placeholder="First Name" class="txt-input" #firstName="ngModel" required type="text" [(ngModel)]="userDetails.firstName" id="firstname" name="firstName" />
+          </div>
+          <div class="col-12 mt-2">
+              <input placeholder="Last Name" class="txt-input" #lastName="ngModel" required type="text" [(ngModel)]="userDetails.lastName" id="lastName" name="lastName" />
+          </div>
+          <div class="col-12 mt-2">
+              <input placeholder="Phone Number" class="txt-input" #phone="ngModel" required type="text" [(ngModel)]="userDetails.phone" id="phone" name="phone" />
+          </div>
+          <div class="row mt-2">
+              <button [disabled]="userDetailsForm.invalid" class="btn prime col-8 offset-2"> Add My Location </button>
+          </div>
+      </form>
+
+  </div>
+</div>

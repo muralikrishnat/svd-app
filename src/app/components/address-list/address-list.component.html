@@ -1,11 +1,20 @@
 <div class="page-section no-bg address-list">
     <div class="container-fluid">
         <div class="row pt-3 page-head-section">
-            <button class="btn btn-link btn-back col-2" (click)="navigationTo('/create-account-code', 'slideright')">BACK</button>
+            <button class="btn btn-link btn-back col-2" (click)="app.navigateByUrl('/address-list', 'slideright')">BACK</button>
             <div class="col-8 my-address-heading">My Address</div>
         </div>
+        <div class="row">
+            <div class="col-12 p-2" (click)="selectAddress(address)" *ngFor="let address of Addresses">
+                <div>{{address.street1 }}, {{address.street2 }}, {{address.city }}, {{address.region }}, {{address.country }}, {{address.postcode }}</div>
+            </div>
+        </div>
         <div class="row mt-2">
-            <div class="btn prime col-8 offset-2" (click)="createTeam()"> Add an Address </div>
+            <button class="btn prime col-8 offset-2" (click)="addAdrress()"> Add an Address </button>
+        </div>
+
+        <div class="row mt-3" *ngIf="Addresses.length > 0">
+            <button class="btn prime col-8 offset-2" (click)="goToMachines()"> Add Machine </button>
         </div>
     </div>
-  </div>
+</div>

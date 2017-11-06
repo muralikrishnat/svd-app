@@ -1,13 +1,13 @@
 <div class="page-section">
   <div class="container-fluid">
       <div class="row pt-3">
-        <button class="btn btn-link btn-back" (click)="navigationTo('/create-account-type', 'slideright')">BACK</button>
+        <button class="btn btn-link btn-back" (click)="app.navigateByUrl('/create-account-type', 'slideright')">BACK</button>
       </div>
       <div class="row mt-2">
-          <div class="btn col-12 glory" (click)="navigationTo('/create-account-password', 'slideleft')"> Create a Team </div>
+          <div class="btn col-12 glory" (click)="setRoleTypeAndNavigate('CUSTOMER_PURCHASER', '/create-account-password', 'slideleft')"> Create a Team </div>
       </div>
       <div class="row mt-2">
-          <div class="btn col-12 glory" (click)="navigationTo('/login', 'slideleft')"> Join a Team </div>
+          <div class="btn col-12 glory" (click)="setRoleTypeAndNavigate('CUSTOMER', '/create-account-name', 'slideleft')"> Join a Team </div>
       </div>
   </div>
 </div>

@@ -1,3 +1,37 @@
-<p>
-  machines-new-edit works!
-</p>
+<div class="page-section no-bg machines-list">
+    <div class="container-fluid">
+        <form #newMachineForm="ngForm" (submit)="saveMachine()">
+            <div class="row pt-3 page-head-section">
+                <button type="button" class="btn btn-link btn-back col-2" (click)="app.navigateByUrl('/machines-list', 'slideright')">BACK</button>
+                <div class="col-8 my-machine-heading pt-2 text-center"> New Machine</div>
+                <button type="submit" [disabled]="newMachineForm.invalid" class="btn btn-link  col-2"> Save</button>
+            </div>
+            <div class="row mt-3">
+                <span (click)="selectManufacturer()">Manufacturer :{{ newMachine.manufacturer.name }}</span>
+                <input (click)="selectManufacturer()" required type="text" placeholder="select manufacturer" class="txt-input" name="manufacturerid" id="manufacturerid" [(ngModel)]="newMachine.manufacturer.id" />
+            </div>
+            <div class="row mt-3">
+                <input required type="text" placeholder="enter model number" class="txt-input" name="modelNumber" id="modelNumber" [(ngModel)]="newMachine.modelNumber" />
+            </div>
+            <div class="row mt-3">
+                <input required type="text" placeholder="enter serial number" class="txt-input" name="serialNumber" id="serialNumber" [(ngModel)]="newMachine.serialNumber" />
+            </div>
+            <div class="row mt-3">
+                <span (click)="selectTechnologyType()">Technology Type : {{ newMachine.technologyType.name }}</span>
+                <input (click)="selectTechnologyType()" required type="text" placeholder="select technology type" class="txt-input" name="technologyTypeid" id="technologyTypeid" [(ngModel)]="newMachine.technologyType.id" />
+            </div>
+            <div class="row mt-3">
+                <input required type="text" placeholder="enter control type" class="txt-input" name="controlType" id="controlType" [(ngModel)]="newMachine.controlType" />
+            </div>
+            <input style="display:none;" required type="text" placeholder="enter control type" class="txt-input" name="addressid" id="addressid" [(ngModel)]="newMachine.address.id" />
+            <div class="row mt-3" *ngIf="!newMachine.address.id">
+                <button class="offset-1 col-10 btn glory" type="button" (click)="selectAnAddress()"> SELECT AN ADDRESS </button>
+            </div>
+            <div class="row mt-3" *ngIf="newMachine.address.id">
+                <div class="col-12">{{ newMachine.address.teee }}, {{ newMachine.address.street1 }}, {{ newMachine.address.street2 }} </div>
+                <div class="col-12">{{ newMachine.address.city }}, {{ newMachine.address.region }}, {{ newMachine.address.country }} </div>
+                <div class="col-12">{{ newMachine.address.district }}, {{ newMachine.address.postcode }}</div>
+            </div>
+        </form>
+    </div>
+</div>

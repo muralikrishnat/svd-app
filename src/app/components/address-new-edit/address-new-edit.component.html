@@ -1,3 +1,62 @@
-<p>
-  address-new-edit works!
-</p>
+<div class="page-section no-bg address-list">
+    <div class="container-fluid">
+        <form #newAddressForm="ngForm" (submit)="saveAddress()">
+            <div class="row pt-3 page-head-section">
+                <button type="button" class="btn btn-link btn-back col-2" (click)="app.navigateByUrl('/address-list', 'slideright')">BACK</button>
+                <div class="col-8 my-address-heading pt-2 text-center"> New Address</div>
+                <button type="submit" [disabled]="newAddressForm.invalid" class="btn btn-link  col-2"> Save</button>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <input required #companyName="ngModel" [(ngModel)]="newAddress.companyName" id="companyName" name="companyName" type="text" placeholder="enter company name" class="txt-input" />
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-6">
+                    <input class="col-6" type="radio" #county="ngModel" (change)="updateCountry('USA')" [(ngModel)]="newAddress.country" id="countyusa" name="country" value="USA" />
+                    <label for="countyusa">USA</label>
+                </div>
+                <div class="col-6">
+                    <input class="col-6" type="radio" #county="ngModel" (change)="updateCountry('CANADA')" [(ngModel)]="newAddress.country" id="countycanada" name="country" value="CANADA" />
+                    <label for="countycanada">CANADA</label>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <input required #street1="ngModel" [(ngModel)]="newAddress.street1" id="street1" name="street1" type="text" placeholder="enter address" class="txt-input col-12" />
+            </div>
+            <div class="row mt-3">
+                <input #street1="ngModel" [(ngModel)]="newAddress.street2" id="street2" name="street2" type="text" placeholder="optional" class="txt-input col-12" />
+            </div>
+            <div class="row mt-3">
+                <input required #city="ngModel" [(ngModel)]="newAddress.city" id="city" name="city" type="text" placeholder="enter city" class="txt-input col-12" />
+            </div>
+            <div class="row mt-3">
+                <input placeholder="select state" required #region="ngModel" (click)="showStates = true;" [(ngModel)]="newAddress.region" id="region" name="region" type="text" />
+            </div>
+            <div class="row mt-3">
+                <input  placeholder="select county" required #district="ngModel" (click)="showCounty = true;" [(ngModel)]="newAddress.district" id="district" name="district" type="text" />
+            </div>
+            <div class="row mt-3">
+                <input required #postcode="ngModel" [(ngModel)]="newAddress.postcode" id="postcode" name="postcode" type="text" placeholder="enter zip code" class="txt-input col-12" />
+            </div>
+            <div class="row mt-3">
+                <label for="location">Location Notes</label>
+                <textarea #location="ngModel" placeholder="Example: Gate 2B, lower level" [(ngModel)]="newAddress.location" name="location" id="location" style="width:100%; height:70px;"></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="modal-pro modal-states" *ngIf="showStates">
+        <div class="modal-overlay" (click)="showStates = false;"></div>
+        <div class="modal-pro-content offset-1 col-10 mt-5">
+            <div *ngFor="let state of StatesByCountry" (click)="setState(state);showStates = false;"> {{ state.description}}</div>
+        </div>
+    </div>
+    <div class="modal-pro modal-county" *ngIf="showCounty">
+            <div class="modal-overlay" (click)="showCounty = false;"></div>
+            <div class="modal-pro-content offset-1 col-10 mt-5">
+                <div *ngFor="let county of Districts" (click)="setCounty(county);showCounty = false;"> {{ county.description}}</div>
+            </div>
+        </div>
+</div>
