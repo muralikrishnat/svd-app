@@ -1,13 +1,34 @@
-<div class="page-section no-bg address-list">
+<div class="page-section no-bg">
     <div class="container-fluid">
-        <div class="row pt-3 page-head-section">
-            <button class="btn btn-link btn-back col-2" (click)="app.navigateByUrl('/address-list', 'slideright')">BACK</button>
-            <div class="col-8 my-address-heading">My Machines</div>
-            <button class="col-2 btn btn-link" (click)="addMachine()">ADD</button>
+        <div class="flex flex-center space-between page-head-section">
+            <button class="button is-small bg-transparent no-border white" (click)="app.navigateByUrl('/address-list', 'slideright')">BACK</button>
+            <h4 class="white">My Machines</h4>
+            <button class="button is-small bg-transparent no-border white" (click)="addMachine()">ADD</button>
         </div>
-        <div class="row">
-            <div *ngFor="let machine of Machines">
-                <div>{{machine.manufacturer.name }}, {{machine.modelNumber }}, {{ machine.serialNumber }},  {{ machine.technologyType.name }}</div>
+        <div class="primary-divider"></div>
+        <div class="search-box">
+            <div class="flex flex-center search-container">
+                <i class="fa fa-search"></i>
+                <input type="text" placeholder="Search for a machine"/>
+                <i class="fa fa-times-circle"></i>
+            </div>
+        </div>
+        <div class="well upperCase">
+            <h4 class="subtitle is-6">select a machine</h4>
+        </div>
+        <div class="machines-list">
+            <div class="flex flex-center space-between well-nobg machine" *ngFor="let machine of Machines">
+                <div>
+                    <p class="capitalize">{{machine.manufacturer.name }}</p>
+                    <p class="upperCase">{{machine.modelNumber }}</p>
+                    <p>Serial: {{ machine.serialNumber }}</p>  
+                    <p class="capitalize">{{ machine.technologyType.name }}</p>
+                </div>
+                <div>
+                    <a>
+                        <i class="fa fa-pencil"></i> Edit
+                    </a>
+                </div>
             </div>
         </div>
     </div>

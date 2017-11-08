@@ -18,8 +18,9 @@
         "testTsconfig": "tsconfig.spec.json",
         "prefix": "app",
         "styles": [
-            "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-            "styles.less"
+            "../node_modules/bulma/css/bulma.css",
+            "../node_modules/font-awesome/less/font-awesome.less",
+            "../src/less/styles.less"
         ],
         "scripts": [],
         "environmentSource": "environments/environment.ts",

@@ -1,3 +1,37 @@
-<p>
-  manufacturer-new-edit works!
-</p>
+<div class="page-section no-bg">
+    <div class="container-fluid">
+        <div class="flex flex-center space-between page-head-section">
+            <button class="button is-small bg-transparent no-border white" (click)="app.navigateByUrl('/address-list', 'slideright')">BACK</button>
+            <h4 class="white">My Machines</h4>
+            <button class="button is-small bg-transparent no-border white" (click)="addMachine()">ADD</button>
+        </div>
+        <div class="primary-divider"></div>        
+        <div class="well upperCase">
+            <h4 class="subtitle is-6">machine details</h4>
+        </div>
+        <div class="flex flex-center well-nobg machine">
+            <div>
+                <p class="capitalize">{{machine.manufacturer.name }}</p>
+                <p class="upperCase">{{machine.modelNumber }}</p>
+                <p>Serial: {{ machine.serialNumber }}</p>  
+                <p class="capitalize">{{ machine.technologyType.name }}</p>
+            </div>
+        </div>
+        <div class="secondary-divider"></div>
+        <div class="well upperCase">
+            <h4 class="subtitle is-6">service address</h4>
+        </div>
+        <div class="flex flex-center well-nobg machine">
+            <div>
+                <p class="capitalize">{{machine.company.name }}</p>
+                <p class="capitalize">{{machine.company.address.street }}</p>
+                <p class="capitalize">{{machine.company.address.location}}, <span class="upperCase">{{machine.company.address.pin}}</span></p>  
+                <p class="capitalize">{{ machine.company.address.country }}</p>
+            </div>
+        </div>
+        <div class="secondary-divider"></div>
+        <div class="well upperCase">
+            <h4 class="subtitle is-6">service details</h4>
+        </div>
+    </div>
+</div>

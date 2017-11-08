@@ -1,0 +1,168 @@
+/* You can add global styles to this file, and also import other style files */
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+@import "_variables";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+html, body {
+    height: 100%;
+    color: @baseColor;
+}
+
+.lnk-nav {
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgb(85, 26, 139);
+}
+
+.page-section {
+    min-height: 100vh;
+    background: linear-gradient(46deg, #00A153 65%, #21BD47 90%);
+}
+
+.no-bg {
+    background: linear-gradient(46deg, #fff 65%, #fff 90%);
+}
+
+.page-head-section {
+    background: linear-gradient(46deg, #00A153 46%, #21BD47 78%);
+    padding: 10px;
+    .button.is-small {
+        &:hover,
+        &:not(:active) {
+            color: #fff;
+        }
+    }
+    h4 {
+        font-size: 1.2rem;
+    }
+}
+
+// Search box styles
+.search-box {
+    padding: 10px 20px;
+    .search-container {
+        padding: 5px 15px;
+        border: 1px solid @mediumGrey1;
+        color: @mediumGrey2;
+        input[type="text"] {
+            width: 100%;
+            height: 30px;
+            margin: 0 5px;
+            border: none;
+            padding: 0 5px;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+
+// A generic well container
+.well,
+.well-nobg {
+    padding: 10px 20px;    
+}
+
+.well {
+    background-color: @lightGrey1;
+}
+
+.upperCase {
+    text-transform: uppercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+// Tabs styles
+.tabs {
+    .button {
+        width: 100%;
+        background-color: #fff !important;
+        &:first-child {
+            border-right: none;
+        }
+        &:not(:first-child) {
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+        }
+        &:not(:last-child) {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+        }
+        &:last-child {
+            border-left: none;
+        }
+    }
+}
+
+// Primary divider below page-head-section
+// Secondary divider below any section except page-head-section
+.primary-divider,
+.secondary-divider {
+    height: 5px;    
+}
+
+.primary-divider {
+    background: linear-gradient(46deg, rgba(79, 193, 233, 0.73) 46%, #7ce295 78%);
+}
+
+.secondary-divider {
+    background: linear-gradient(46deg, rgb(117, 183, 212) 15%, #7ce295 85%);
+}
+
+.txt-input {
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.bg-transparent {
+    background: transparent;
+}
+
+.no-border {
+    border: none;
+}
+
+.white {
+    color: #fff;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+// region Flex styles
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    align-items: center;
+}
+
+.flex-right {
+    justify-content: flex-end;
+}
+
+.flex-left {
+    justify-content: flex-start;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+// endregion

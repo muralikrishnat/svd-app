@@ -1,16 +1,46 @@
 <div class="page-section no-bg address-list">
     <div class="container-fluid">
-        <div class="row pt-3 page-head-section">
-            <button class="btn btn-link btn-back col-2" (click)="app.navigateByUrl('/address-list', 'slideright')">BACK</button>
-            <div class="col-8 my-address-heading">My Address</div>
+        <div class="flex flex-center space-between page-head-section">
+            <button class="button is-small bg-transparent no-border white" (click)="app.navigateByUrl('/address-list', 'slideright')">BACK</button>
+            <h4 class="white">My Address</h4>
+            <button class="invisible">hidden</button>
         </div>
-        <div class="row">
-            <div class="col-12 p-2" (click)="selectAddress(address)" *ngFor="let address of Addresses">
-                <div>{{address.street1 }}, {{address.street2 }}, {{address.city }}, {{address.region }}, {{address.country }}, {{address.postcode }}</div>
+        <div class="primary-divider"></div>
+        <div>
+            <div class="search-box">
+                <div class="flex flex-center search-container">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Search for an address"/>
+                    <i class="fa fa-times-circle"></i>
+                </div>
+            </div>
+            <div class="well upperCase">
+                <h4 class="subtitle is-6">select a address</h4>
+            </div>
+            <div class="secondary-divider"></div>
+            <div class="well upperCase">
+                <div class="flex tabs">
+                    <span class="button is-small is-info is-outlined">Yes</span>
+                    <span class="button is-small is-info is-outlined">Maybe</span>
+                    <span class="button is-small is-info is-outlined">No</span>
+                </div>
+            </div>
+            <div class="flex flex-center space-between" (click)="selectAddress(address)" *ngFor="let address of Addresses">
+                <div>
+                    {{address.street1 }}, 
+                    {{address.street2 }}, 
+                    {{address.city }}, 
+                    {{address.region }}, 
+                    {{address.country }}, 
+                    {{address.postcode }}
+                </div>
+                <div>
+                    <i class="fa fa-pencil"></i> Edit
+                </div>
             </div>
         </div>
-        <div class="row mt-2">
-            <button class="btn prime col-8 offset-2" (click)="addAdrress()"> Add an Address </button>
+        <div _ngcontent-c1="" class="flex space-around">
+            <button _ngcontent-c1="" class="button is-success" (click)="addAdrress()"> Add an Address </button>
         </div>
 
         <div class="row mt-3" *ngIf="Addresses.length > 0">

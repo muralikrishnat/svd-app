@@ -29,6 +29,34 @@ export class MyMachinesComponent implements OnInit {
         }
       });
     }
+    this.Machines = [{
+      manufacturer: {
+        name: 'Baker Manufacturing'
+      },
+      modelNumber: 'bker87',
+      serialNumber: 'bjk2743',
+      technologyType: {
+        name: 'Laser Injection'
+      }
+    },{
+      manufacturer: {
+        name: 'Baker Manufacturing'
+      },
+      modelNumber: 'bker87',
+      serialNumber: 'bjk2743',
+      technologyType: {
+        name: 'Laser Injection'
+      }
+    },{
+      manufacturer: {
+        name: 'Baker Manufacturing'
+      },
+      modelNumber: 'bker87',
+      serialNumber: 'bjk2743',
+      technologyType: {
+        name: 'Laser Injection'
+      }
+    }];
   }
 
   addMachine() {
